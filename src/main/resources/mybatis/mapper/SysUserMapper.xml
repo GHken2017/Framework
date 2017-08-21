@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.microservice.dao.SysUserDao">
+
+	<select id="getUserList" resultType="com.microservice.bean.SysUser">
+		SELECT
+			sys_user.user_id,
+			sys_user.login_name,
+			sys_user.password,
+			sys_user.user_name,
+			sys_user.head_icon,
+			sys_user.simple_spelling,
+			sys_user.gender_code,
+			sys_user.gender_name,
+			sys_user.mobile,
+			sys_user.tel,
+			sys_user.email,
+			sys_user.wechat,
+			sys_user.qq,
+			sys_user.manage_id,
+			sys_user.manager,
+			sys_user.organize_id,
+			sys_user.department_id,
+			sys_user.is_license_check,
+			sys_user.first_visit,
+			sys_user.previous_visit,
+			sys_user.last_visit,
+			sys_user.employee_state,
+			sys_user.employee_state_dec,
+			sys_user.user_state,
+			sys_user.user_state_dec,
+			sys_user.delete_mark,
+			sys_user.enable_mark,
+			sys_user.description,
+			sys_user.create_user_id,
+			sys_user.create_user_name,
+			sys_user.create_date,
+			sys_user.modify_user_id,
+			sys_user.modify_user_name,
+			sys_user.modify_date,
+			sys_user.tenant_id,
+			sys_user.create_time_stamp,
+			sys_user.modify_time_stamp,
+			sys_user.is_manager
+		FROM 
+			sys_user
+		
+	</select>
+	
+</mapper>

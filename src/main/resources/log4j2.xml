@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+	<properties>
+		<property name="LOG_HOME">/spring-boot-log/as</property>
+		<property name="FILE_NAME">as-system</property>
+	</properties>
+	<Appenders>
+		<Console name="consoleLog" target="SYSTEM_OUT" follow="true">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] [%c] [%p] - %m%n</pattern>
+			</PatternLayout>
+		</Console>
+		<RollingRandomAccessFile name="rollingRandomAccessFileLog"
+			fileName="${LOG_HOME}/${FILE_NAME}.log"
+			filePattern="${LOG_HOME}/$${date:yyyy-MM}/${FILE_NAME}-%d{yyyy-MM-dd HH-mm}-%i.log">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] [%c] [%p] - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="20" />
+		</RollingRandomAccessFile>
+	</Appenders>
+
+	<Loggers>
+
+		<Logger name="org.apache.catalina.util.LifecycleBase" level="error" />
+		<Logger name="org.apache.coyote.http11.Http11NioProtocol"
+			level="warn" />
+		<Logger name="org.apache.tomcat.util.net.NioSelectorPool"
+			level="warn" />
+		<Logger name="com.mbpsoft.dao" level="debug" />
+		<Logger name="org.apache.zookeeper" level="error" />
+
+		<Root level="debug">
+			<AppenderRef ref="consoleLog" />
+			<AppenderRef ref="rollingRandomAccessFileLog" />
+		</Root>
+	</Loggers>
+</Configuration>
